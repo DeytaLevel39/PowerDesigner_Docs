@@ -1,36 +1,43 @@
 # References
 This is a re-write of the original Python 2 PDMHandler which is available at:- https://github.com/petjiang/PDMHandler
 
-# PDMHandler
-A tool class to handle sybase PowerDesigner datafile(.pdm). 
-Currently, it is able to handle PhysicalDiagram in .pdm.
+# PowerDesigner_Docs
+Python scripts designed to generate documentation from 
+Sybase PowerDesigner datafiles
+. 
+Currently, it is able to handle:-
+* Conceptual Data Model (.cdm) files
+* Physical Data Model (.pdm) files
 
-## Source Code Intro.
-### PDMHandler.py
-The class implementation  of PDMHandler.
-use following command to see help docs 
+## TEST CDM files
 
-``` shell
-$ echo "import PDMHandler; help(PDMHandler);"|python
+Run from the src directory
+
+### cr_cdm_datadict.py
+This will read the PowerDesigner Conceptual Data Model (CDM) file and write a data dictionary to an excel file
 ```
-### TEST PDM files
- PowerDesigner model file (.pdm) is prepared in [repodir]/src/testpdm
- use these as input argument for testing the example1.py
-* NOTICE: (.pdm) files come from PowerDesigner15 directory [Sybase\PowerDesigner 15\Examples]
- 
-### cr_datadict.py
-This will read the PowerDesigner Physical Data Model (PDM) file and write a data dictionary to an excel file
-```
-
 By running :
 ``` shell
-$ python example1.py testpdm/Consol.pdm Consul_datadict.xlsx
+$ python cr_cdm_datadict.py testpdm\<filename>.cdm <filename>_datadict.xlsx
+e.g. 
+$ cr_cdm_datadict.py testpdm\project.cdm project_cdm_datadict.xlsx
 ```
 
-### cr_ddl.py
+## TEST PDM files
+* NOTICE: (.pdm) files come from PowerDesigner15 directory [Sybase\PowerDesigner 15\Examples]
+
+### cr_pdm_datadict.py
+This will read the PowerDesigner Physical Data Model (PDM) file and write a data dictionary to an excel file
+```
+By running :
+``` shell
+$ python cr_pdm_datadict.py testpdm\project.pdm project_pdm_datadict.xlsx
+```
+
+### cr_pdm_ddl.py
 This will read the PowerDesigner Physical Data Model (PDM) file located at testpdm and write a data definition language (DDL) file
 
 By running :
 ``` shell
-$ python example1.py testpdm/Consol.pdm Consul_datadict.xlsx
+$ python cr_pdm_ddl.py testpdm\project.pdm project.ddl
 ```
