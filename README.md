@@ -1,10 +1,14 @@
+#References
+This is a re-write of the original Python 2 PDMHandler which is available at:- https://github.com/petjiang/PDMHandler
+
 # PDMHandler
 A tool class to handle sybase PowerDesigner datafile(.pdm). 
 Currently, it is able to handle PhysicalDiagram in .pdm.
+
 ## Source Code Intro.
 ### PDMHandler.py
 The class implementation  of PDMHandler.
-use following command to see help docs (sorry that I type it in Chinese):
+use following command to see help docs 
 
 ``` shell
 $ echo "import PDMHandler; help(PDMHandler);"|python
@@ -28,48 +32,7 @@ IDXCOL_ATTR_LIST=["CreationDate","Creator","ModificationDate","Modifier"]
 
 By running :
 ``` shell
-$ python example1.py testpdm/Consol.pdm
+$ python example1.py testpdm/Consol.pdm Consul_datadict.xlsx
 ```
 
-shows the output to standout :
-``` shell
- P: Duplicated Database DUPLICATED_DATABASE lpommier
-  T: Duplicated Account DUPLICATED_ACCOUNT vaudino
-   T-PATH: /Model/o:RootObject/c:Children/o:Model/c:Tables/o:Table
-   C: Email EMAIL char(256) 256 1
-   C: Name NAME char(256) 256
-   C: URL URL char(256) 256
-   I: ACCOUNT_PK ACCOUNT_PK 1
-    IC: EMAIL
-  T: Duplicated Auteurs DUPLICATED_AUTEURS vaudino
-   T-PATH: /Model/o:RootObject/c:Children/o:Model/c:Tables/o:Table
-   C: Email EMAIL char(256) 256 1
-   C: Title TITLE char(256) 256 1
-   I: AUTEURS_PK AUTEURS_PK 1
-    IC: EMAIL
-    IC: TITLE
-   I: Publication_FK PUBLICATION_FK
-    IC: EMAIL
-   I: Authors_FK AUTHORS_FK
-    IC: TITLE
-  T: Duplicated Publication DUPLICATED_PUBLICATION vaudino
-   T-PATH: /Model/o:RootObject/c:Children/o:Model/c:Tables/o:Table
-   C: Title TITLE char(256) 256 1
-   C: Email EMAIL char(256) 256 1
-   C: Pub_Title PUB_TITLE char(256) 256
-   C: Summary SUMMARY long varchar
-   C: Keywords KEYWORDS char(256) 256
-   I: PUBLICATION_PK PUBLICATION_PK 1
-    IC: TITLE
-   I: PUBLISHER_FK PUBLISHER_FK
-    IC: EMAIL
-   I: REFERENCES_FK REFERENCES_FK
-    IC: PUB_TITLE
-```
-
-## Why I write it ?
-Yes,it is just a tiny code for fun.
-But I hope more features will be added in it, and it will be useful to solve some headachy problem. Just like :
-*  compare the online database instance with PDM file.
-*  autogen SQL schema from PDM file (PowerDesigner's auto-gen setting sucks)
-*  autogen ORM fro PDM file (seems awesome?!,support embed c,SQLAlchemy..)
+will read the PowerDesigner Physical Data Model (PDM) file located at testpdm and write a data dictionary to the Consul_datadict.xlsx excel file
