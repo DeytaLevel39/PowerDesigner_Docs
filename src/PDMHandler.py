@@ -114,7 +114,7 @@ class PDMHandler(object):
       o_mdl  = PDMHandler.__get_nodes_by_path(hpdm,"Model/o:RootObject/c:Children/o:Model")[0]
       ret_list.append(o_mdl)
     except IndexError:
-      print "ERROR:不是一个合法的pdm文件!"
+      print("ERROR:不是一个合法的pdm文件!")
       return []
     ret_list = ret_list + PDMHandler.__get_pkgnodes_recursively(o_mdl)
     return ret_list
